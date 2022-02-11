@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <h3>Seguro que quiere eliminar?</h3>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'libro:function_list' %}">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

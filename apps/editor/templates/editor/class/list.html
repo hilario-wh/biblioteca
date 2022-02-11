@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% block nav_button %}
+<a class="btn btn-outline-success" href="{% url 'editor:class_create' %}">Agregar</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Nombre</td>
+                <td>Domicilio</td>
+                <td>Ciudad</td>
+                <td>Estado</td>
+                <td>Pais</td>
+                <td>Website</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for editor in object_list %}
+            <tr>
+                <td>{{ editor.id }}</td>
+                <td>{{ editor.nombre }}</td>
+                <td>{{ editor.domicilio }}</td>
+                <td>{{ editor.ciudad }}</td>
+                <td>{{ editor.estado }}</td>
+                <td>{{ editor.pais }}</td>
+                <td>{{ editor.website }}</td>
+                <td>
+                    <a href="{% url 'editor:class_update' editor.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'editor:class_delete' editor.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="8">No hay registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
